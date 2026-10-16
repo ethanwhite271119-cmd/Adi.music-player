@@ -1,0 +1,1577 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Demon | Android Application Architect & Audio Systems Developer</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            aura: {
+              bg: '#0a0c10',
+              card: '#121620',
+              cardHover: '#181d2a',
+              border: '#1f2637',
+              red: '#ff2a55',
+              redDark: '#e50914',
+              redGlow: 'rgba(255, 42, 85, 0.4)',
+              accent: '#8b5cf6',
+              cyan: '#00f2fe',
+              emerald: '#10b981'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            signature: ['Caveat', 'cursive'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          boxShadow: {
+            'glow-red': '0 0 25px rgba(255, 42, 85, 0.45)',
+            'glow-cyan': '0 0 25px rgba(0, 242, 254, 0.3)',
+            'phone': '0 25px 50px -12px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 42, 85, 0.2)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0c10;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #252b3d;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff2a55;
+    }
+
+    /* Print Styles for Technical Resume */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .resume-container {
+        box-shadow: none !important;
+        border: none !important;
+        background: #ffffff !important;
+        color: #111111 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .resume-text-contrast {
+        color: #111827 !important;
+      }
+      .resume-badge {
+        background: #f3f4f6 !important;
+        color: #111827 !important;
+        border: 1px solid #d1d5db !important;
+      }
+    }
+
+    /* Subtle background grid pattern */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    /* Smartphone hardware styling */
+    .phone-mockup {
+      width: 340px;
+      height: 720px;
+      border-radius: 46px;
+      border: 8px solid #1a1e29;
+      outline: 2px solid #2e3547;
+      box-shadow: 0 0 0 1px #000, 0 25px 60px rgba(0,0,0,0.95), 0 0 45px rgba(255,42,85,0.22);
+    }
+  </style>
+</head>
+
+<body class="bg-[#0a0c10] text-slate-100 font-sans antialiased min-h-screen selection:bg-aura-red selection:text-white bg-grid-pattern">
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="no-print sticky top-0 z-50 backdrop-blur-xl bg-[#0a0c10]/85 border-b border-aura-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-aura-redDark to-aura-red flex items-center justify-center shadow-glow-red transition-transform group-hover:scale-105">
+          <svg class="w-5 h-5 text-white fill-current ml-0.5" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight text-white flex items-center gap-1.5">
+            AURASOUND <span class="text-xs px-1.5 py-0.5 rounded bg-aura-red/20 text-aura-red font-mono font-semibold border border-aura-red/40">APK</span>
+          </span>
+          <span class="text-[11px] block text-slate-400 font-mono">Aditya Demon • Android Architect</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#simulator" class="hover:text-aura-red transition-colors flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-aura-red animate-pulse"></span> App Simulator
+        </a>
+        <a href="#analysis" class="hover:text-aura-red transition-colors">Screen Breakdown</a>
+        <a href="#architecture" class="hover:text-aura-red transition-colors">Tech Architecture</a>
+        <a href="#resume" class="hover:text-aura-red transition-colors">Technical Resume</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/aditya_demon_3410?mdxt=MTdvbGFpOHdxcWJ6aw==" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-semibold text-slate-200 hover:text-white hover:border-aura-red transition">
+          <svg class="w-3.5 h-3.5 text-pink-500 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          @aditya_demon_3410
+        </a>
+
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 hover:text-white transition">
+          <svg class="w-3.5 h-3.5 text-aura-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+          </svg>
+          Print Resume
+        </button>
+
+        <a href="mailto:ethanwhite271119@gmail.com" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-aura-redDark to-aura-red text-white shadow-glow-red hover:brightness-110 active:scale-95 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Email Me
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO & CREATOR IDENTITY ================= -->
+  <section class="no-print relative pt-12 pb-20 overflow-hidden border-b border-aura-border/60">
+    <!-- Glow effects in background -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-aura-red/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 right-10 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Developer Identity & Bio -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aura-card border border-aura-border text-xs font-mono text-slate-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>OPEN TO HIGH-IMPACT ANDROID &amp; AUDIO ROLES</span>
+          </div>
+
+          <div class="space-y-2">
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
+              Aditya <span class="font-signature text-aura-red text-5xl sm:text-7xl ml-1 font-normal tracking-wide transform -rotate-2 inline-block">demon</span>
+            </h1>
+            <p class="text-lg sm:text-xl font-medium text-slate-300">
+              Android Application Architect &amp; Audio Systems Developer
+            </p>
+          </div>
+
+          <p class="text-slate-400 leading-relaxed text-base max-w-2xl">
+            Creator and principal architect of <strong class="text-slate-200">AuraSound APK</strong> — an advanced Android music platform uniting YouTube Music cloud streaming, YouTube InnerTube live API sync, local lossless storage decoding (<span class="text-aura-cyan font-mono">FLAC / WAV / 320kbps MP3 / AAC</span>), and hardware-accelerated Media3 audio pipelines.
+          </p>
+
+          <!-- Core Metric Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2">
+            <div class="p-3 rounded-2xl bg-aura-card border border-aura-border">
+              <div class="text-xs text-slate-400 font-mono">Audio Bitrate</div>
+              <div class="text-xl font-bold text-aura-red font-mono mt-0.5">320 kbps</div>
+              <div class="text-[10px] text-slate-500">Lossless FLAC/AAC</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-aura-card border border-aura-border">
+              <div class="text-xs text-slate-400 font-mono">Core Engine</div>
+              <div class="text-xl font-bold text-white font-mono mt-0.5">ExoPlayer</div>
+              <div class="text-[10px] text-slate-500">Media3 Background DSP</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-aura-card border border-aura-border">
+              <div class="text-xs text-slate-400 font-mono">Cloud Sync</div>
+              <div class="text-xl font-bold text-emerald-400 font-mono mt-0.5">Live YT</div>
+              <div class="text-[10px] text-slate-500">UC_AuraMusic ID</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-aura-card border border-aura-border">
+              <div class="text-xs text-slate-400 font-mono">Storage Engine</div>
+              <div class="text-xl font-bold text-purple-400 font-mono mt-0.5">SAF Index</div>
+              <div class="text-[10px] text-slate-500">Auto Internal &amp; SD</div>
+            </div>
+          </div>
+
+          <!-- Verified Contact Badges -->
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <a href="mailto:ethanwhite271119@gmail.com" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-aura-red/50 text-xs font-mono text-slate-300 flex items-center gap-2 transition">
+              <span class="text-aura-red">✉</span> ethanwhite271119@gmail.com
+            </a>
+            <a href="https://www.instagram.com/aditya_demon_3410?mdxt=MTdvbGFpOHdxcWJ6aw==" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-pink-500/50 text-xs font-mono text-slate-300 flex items-center gap-2 transition">
+              <span class="text-pink-500">📸</span> @aditya_demon_3410
+            </a>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#simulator" class="px-6 py-3 rounded-xl bg-gradient-to-r from-aura-redDark to-aura-red text-white font-semibold text-sm shadow-glow-red hover:shadow-lg transition active:scale-95 flex items-center gap-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+              </svg>
+              Explore Live App Simulator
+            </a>
+            <a href="#resume" class="px-6 py-3 rounded-xl bg-aura-card hover:bg-aura-cardHover border border-aura-border text-slate-200 font-semibold text-sm transition flex items-center gap-2">
+              <svg class="w-4 h-4 text-aura-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              View Full Resume
+            </a>
+            <button onclick="toggleAudio()" id="heroPlayAudioBtn" class="px-4 py-3 rounded-xl border border-aura-border bg-slate-900/70 hover:border-aura-red/50 text-slate-300 font-mono text-xs transition flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-aura-red animate-ping" id="audioPulseDot"></span>
+              <span id="heroPlayText">Play Midnight City Demo (Web Audio)</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right: Aditya demon Portrait Frame -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group">
+            <!-- Glow background -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-aura-red to-purple-600 rounded-3xl blur-xl opacity-35 group-hover:opacity-55 transition duration-1000"></div>
+            
+            <div class="relative bg-aura-card border-2 border-aura-border rounded-3xl p-4 overflow-hidden max-w-sm sm:max-w-md shadow-2xl">
+              <!-- Ink-Splatter Artist Canvas Frame -->
+              <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-slate-900 flex flex-col justify-end p-5">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                
+                <!-- Artistic Ink Splatter Background & Silhouette Vector -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-95">
+                  <svg viewBox="0 0 400 500" class="w-full h-full object-cover">
+                    <defs>
+                      <filter id="inkRoughness">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+                      </filter>
+                    </defs>
+                    
+                    <rect width="100%" height="100%" fill="#dedad2" />
+                    <!-- Ink wash splatters in black & dark grey matching Aditya's photo background -->
+                    <path d="M70,80 Q130,20 200,60 T340,90 Q380,200 350,300 T240,430 Q120,440 60,320 T70,80 Z" fill="#18181c" opacity="0.92" filter="url(#inkRoughness)" />
+                    <circle cx="100" cy="110" r="14" fill="#18181c" opacity="0.8" />
+                    <circle cx="330" cy="140" r="20" fill="#18181c" opacity="0.8" />
+                    <circle cx="70" cy="270" r="18" fill="#18181c" opacity="0.85" />
+                    <circle cx="340" cy="340" r="25" fill="#18181c" opacity="0.85" />
+                    <circle cx="365" cy="250" r="12" fill="#18181c" opacity="0.75" />
+
+                    <!-- Stylized Portrait Representation of Aditya -->
+                    <!-- Shirt: Black textured button-up shirt with open collar -->
+                    <path d="M110,480 L110,340 Q150,310 180,335 L200,380 L220,335 Q250,310 290,340 L290,480 Z" fill="#0d0e14" />
+                    <!-- Chest / Neck -->
+                    <path d="M175,290 L175,345 Q200,370 225,345 L225,290 Z" fill="#caa58b" />
+                    <!-- Head & Jawline -->
+                    <ellipse cx="200" cy="230" rx="60" ry="72" fill="#caa58b" />
+                    <!-- Hair (Voluminous wavy modern cut matching Aditya's look) -->
+                    <path d="M135,210 Q140,140 185,130 Q225,125 255,145 Q268,175 265,220 Q240,165 210,160 Q170,165 145,215 Z" fill="#161517" />
+                    <path d="M140,160 Q170,130 220,135 Q255,145 260,175 Q230,140 180,145 Z" fill="#252429" />
+                    <!-- Facial details -->
+                    <!-- Brows -->
+                    <path d="M165,205 Q180,200 190,205" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" fill="none" />
+                    <path d="M210,205 Q220,200 235,205" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" fill="none" />
+                    <!-- Eyes -->
+                    <ellipse cx="178" cy="217" rx="6" ry="4" fill="#1c1917" />
+                    <ellipse cx="222" cy="217" rx="6" ry="4" fill="#1c1917" />
+                    <!-- Nose -->
+                    <path d="M200,215 L196,242 Q200,248 206,244" stroke="#a37c63" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <!-- Mustache & Mouth -->
+                    <path d="M188,256 Q200,253 212,256" stroke="#2b2725" stroke-width="2" stroke-linecap="round" fill="none" />
+                    <path d="M190,266 Q200,272 210,266" stroke="#8d564c" stroke-width="3" stroke-linecap="round" fill="none" />
+                  </svg>
+                </div>
+
+                <!-- Calligraphic "Aditya demon" title matching photo -->
+                <div class="relative z-20 pt-6">
+                  <div class="text-center">
+                    <span class="font-signature text-white text-5xl tracking-wide drop-shadow-[0_4px_12px_rgba(0,0,0,0.95)]">
+                      Aditya demon
+                    </span>
+                    <div class="w-48 h-1 mx-auto bg-gradient-to-r from-transparent via-aura-red to-transparent mt-1 rounded-full"></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Card Sub-Footer info -->
+              <div class="mt-4 flex items-center justify-between text-xs font-mono text-slate-400">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-aura-red"></span>
+                  <span>AuraSound Architect</span>
+                </div>
+                <span class="text-slate-300 font-semibold">ExoPlayer / Media3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE AURASOUND SMARTPHONE SIMULATOR ================= -->
+  <section id="simulator" class="no-print py-20 bg-gradient-to-b from-[#0a0c10] via-[#0e121a] to-[#0a0c10] border-b border-aura-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-aura-red/10 border border-aura-red/30 text-aura-red text-xs font-mono mb-3">
+          <span>INTERACTIVE SCREENSHOT REPLICA &amp; LIVE DEMO</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          AuraSound APK <span class="text-transparent bg-clip-text bg-gradient-to-r from-aura-red to-pink-500">Live Device Simulator</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-3">
+          Explore all five views engineered by Aditya: Home Quick Picks, Now Playing Audio Studio, YouTube Live Radio, Local Device Scanner, and Settings &amp; YouTube Sync.
+        </p>
+      </div>
+
+      <!-- Simulator Layout: Tabs + Phone + Technical Analysis -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left: Screen Navigation Buttons -->
+        <div class="lg:col-span-4 space-y-3 order-2 lg:order-1">
+          <div class="text-xs font-mono uppercase text-slate-400 tracking-wider mb-2">Switch Screen View:</div>
+
+          <!-- Tab 1: Home -->
+          <button onclick="switchPhoneScreen('home')" id="tabBtn-home" class="screen-tab-btn active w-full text-left p-4 rounded-2xl bg-aura-card border-2 border-aura-red text-white flex items-center justify-between transition-all group shadow-glow-red">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-aura-red/20 text-aura-red flex items-center justify-center font-bold">
+                1
+              </div>
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-aura-red transition">Home / Quick Picks</div>
+                <div class="text-xs text-slate-400 font-mono">Mood chips, Synthwave queues</div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-aura-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+
+          <!-- Tab 2: Now Playing Studio -->
+          <button onclick="switchPhoneScreen('nowplaying')" id="tabBtn-nowplaying" class="screen-tab-btn w-full text-left p-4 rounded-2xl bg-aura-card border border-aura-border text-slate-300 hover:text-white hover:border-slate-600 flex items-center justify-between transition-all group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
+                2
+              </div>
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-purple-400 transition">Now Playing Studio</div>
+                <div class="text-xs text-slate-400 font-mono">Song/Video toggle &amp; Seekbar</div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+
+          <!-- Tab 3: Explore / Live Radio -->
+          <button onclick="switchPhoneScreen('explore')" id="tabBtn-explore" class="screen-tab-btn w-full text-left p-4 rounded-2xl bg-aura-card border border-aura-border text-slate-300 hover:text-white hover:border-slate-600 flex items-center justify-between transition-all group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-aura-redDark/20 text-aura-red flex items-center justify-center font-bold">
+                3
+              </div>
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-aura-red transition">Explore / Live Radio</div>
+                <div class="text-xs text-slate-400 font-mono">Endless seed algorithmic radio</div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+
+          <!-- Tab 4: Local Storage Library -->
+          <button onclick="switchPhoneScreen('library')" id="tabBtn-library" class="screen-tab-btn w-full text-left p-4 rounded-2xl bg-aura-card border border-aura-border text-slate-300 hover:text-white hover:border-slate-600 flex items-center justify-between transition-all group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                4
+              </div>
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-emerald-400 transition">Offline Library &amp; Scanner</div>
+                <div class="text-xs text-slate-400 font-mono">SD Card, FLAC/MP3 indexer</div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+
+          <!-- Tab 5: Settings & Sync Engine -->
+          <button onclick="switchPhoneScreen('settings')" id="tabBtn-settings" class="screen-tab-btn w-full text-left p-4 rounded-2xl bg-aura-card border border-aura-border text-slate-300 hover:text-white hover:border-slate-600 flex items-center justify-between transition-all group">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                5
+              </div>
+              <div>
+                <div class="font-bold text-sm text-white group-hover:text-cyan-400 transition">Settings &amp; YouTube Sync</div>
+                <div class="text-xs text-slate-400 font-mono">UC_AuraMusic ID, 320 kbps</div>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Center: Interactive Hardware Smartphone Frame -->
+        <div class="lg:col-span-4 flex justify-center order-1 lg:order-2">
+          <div class="phone-mockup bg-[#08080c] relative flex flex-col overflow-hidden text-white select-none">
+            
+            <!-- Android Dynamic Island / Camera & Speaker Bar -->
+            <div class="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-4 bg-black rounded-full z-50 flex items-center justify-center gap-2">
+              <div class="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-700"></div>
+              <div class="w-8 h-1 bg-slate-800 rounded-full"></div>
+            </div>
+
+            <!-- Phone Top Status Bar -->
+            <div class="h-8 px-6 pt-2 flex items-center justify-between text-[11px] font-mono text-slate-400 z-40 bg-black/40">
+              <span id="phoneClock">06:42</span>
+              <div class="flex items-center gap-1.5 text-xs">
+                <span>5G</span>
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25A11.93 11.93 0 010 12C0 5.37 5.37 0 12 0s12 5.37 12 12c0 2.29-.64 4.43-1.76 6.25l-.62-.64C22.26 16.07 23 14.12 23 12c0-4.97-4.03-9-9-9z"/></svg>
+                <div class="w-4 h-2 rounded-sm border border-slate-400 p-0.5 flex items-center">
+                  <div class="w-full h-full bg-white rounded-xs"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= SCREEN 1: HOME ================= -->
+            <div id="screen-home" class="screen-content flex-1 flex flex-col overflow-y-auto px-4 pt-2 pb-16 bg-[#08080c]">
+              <!-- App Bar -->
+              <div class="flex items-center justify-between py-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-aura-red flex items-center justify-center shadow-glow-red">
+                    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span class="font-extrabold text-sm tracking-tight text-white">AURASOUND APK</span>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-aura-red/20 text-aura-red font-bold border border-aura-red/40">MUSIC</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                  <div class="px-2 py-0.5 rounded-full bg-slate-800 text-[10px] flex items-center gap-1 border border-slate-700">
+                    <span class="w-1.5 h-1.5 rounded-full bg-aura-red"></span>
+                    <span>Guest</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Filter chips -->
+              <div class="flex items-center gap-1.5 overflow-x-auto py-2 no-scrollbar text-xs">
+                <button class="px-3 py-1 rounded-full bg-white text-black font-semibold flex items-center gap-1 text-[11px]">
+                  <span>✨</span> All
+                </button>
+                <button class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-1 text-[11px] whitespace-nowrap">
+                  <span>⚡</span> Energize
+                </button>
+                <button class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-1 text-[11px] whitespace-nowrap">
+                  <span>☕</span> Relax
+                </button>
+                <button class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-1 text-[11px] whitespace-nowrap">
+                  <span>🔥</span> Workout
+                </button>
+              </div>
+
+              <!-- Section: Quick Picks -->
+              <div class="mt-3">
+                <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Start radio from a song</div>
+                <div class="flex items-center justify-between mt-0.5 mb-2">
+                  <h3 class="text-xl font-extrabold text-white">Quick picks</h3>
+                  <div class="flex items-center gap-1.5">
+                    <button onclick="toggleAudio()" class="px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-[11px] font-semibold flex items-center gap-1 hover:border-aura-red">
+                      <span>▶</span> Play all
+                    </button>
+                    <button class="w-6 h-6 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-xs text-slate-400">
+                      ❯
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Track 1: Midnight City Chill -->
+                <div onclick="switchPhoneScreen('nowplaying')" class="p-2.5 rounded-2xl bg-slate-900/90 border border-aura-red/50 shadow-glow-red flex items-center justify-between mb-2 cursor-pointer transition hover:bg-slate-800">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex-shrink-0"></div>
+                    <div class="truncate">
+                      <div class="text-xs font-bold text-aura-red truncate">Midnight City Chill (Synthwav...</div>
+                      <div class="text-[10px] text-slate-400 truncate">Lofi Girl &amp; Synth Records</div>
+                      <div class="text-[9px] text-aura-red font-mono">YouTube Music • 3:34</div>
+                    </div>
+                  </div>
+                  <div class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-aura-red">
+                    ♥
+                  </div>
+                </div>
+
+                <!-- Track 2: Golden Hour Reflections -->
+                <div class="p-2.5 rounded-2xl bg-slate-900/50 border border-slate-800/80 flex items-center justify-between mb-2 cursor-pointer transition hover:border-slate-600">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-pink-600 to-purple-700 flex-shrink-0"></div>
+                    <div class="truncate">
+                      <div class="text-xs font-bold text-white truncate">Golden Hour Reflections</div>
+                      <div class="text-[10px] text-slate-400 truncate">Aura Soundscapes &amp; K-Chill</div>
+                      <div class="text-[9px] text-aura-red font-mono">YouTube Music • 3:05</div>
+                    </div>
+                  </div>
+                  <div class="w-7 h-7 rounded-full bg-slate-800/70 flex items-center justify-center text-slate-500">
+                    ♡
+                  </div>
+                </div>
+
+                <!-- Track 3: Cyberpunk Fluid Motion -->
+                <div class="p-2.5 rounded-2xl bg-slate-900/50 border border-slate-800/80 flex items-center justify-between mb-2 cursor-pointer transition hover:border-slate-600">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-800 to-indigo-600 flex-shrink-0"></div>
+                    <div class="truncate">
+                      <div class="text-xs font-bold text-white truncate">Cyberpunk Fluid Motion</div>
+                      <div class="text-[10px] text-slate-400 truncate">Vector Pulse</div>
+                    </div>
+                  </div>
+                  <div class="w-7 h-7 rounded-full bg-slate-800/70 flex items-center justify-center text-slate-500">
+                    ♡
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ================= SCREEN 2: NOW PLAYING ================= -->
+            <div id="screen-nowplaying" class="screen-content hidden flex-1 flex flex-col overflow-y-auto px-4 pt-2 pb-16 bg-[#08080c]">
+              <!-- Top Pill bar -->
+              <div class="flex items-center justify-between py-2">
+                <button onclick="switchPhoneScreen('home')" class="text-slate-400 text-xs">
+                  ⌄
+                </button>
+                <div class="p-0.5 rounded-full bg-slate-900 border border-slate-800 flex items-center text-[10px] font-semibold">
+                  <button class="px-2.5 py-1 rounded-full bg-white text-black">♪ Song</button>
+                  <button class="px-2.5 py-1 text-slate-400">📹 Video</button>
+                </div>
+                <div class="flex items-center gap-2 text-slate-400 text-xs">
+                  <span>🌙</span>
+                  <span>🔗</span>
+                </div>
+              </div>
+
+              <!-- Artwork -->
+              <div class="relative w-full aspect-square my-3 rounded-3xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-purple-600 flex items-center justify-center shadow-2xl overflow-hidden">
+                <div class="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/60 text-[9px] font-mono flex items-center gap-1 text-white border border-white/10">
+                  <span class="text-aura-red">📺</span> YouTube Music
+                </div>
+                <!-- Play button in center -->
+                <button onclick="toggleAudio()" class="w-16 h-16 rounded-full bg-aura-red flex items-center justify-center shadow-glow-red hover:scale-105 active:scale-95 transition">
+                  <svg id="phoneNowPlayingIcon" class="w-8 h-8 fill-white ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+
+              <!-- Title & Controls -->
+              <div class="mt-2 text-center">
+                <h4 class="text-base font-bold text-white truncate">Midnight City Chill (Synthwave)</h4>
+                <p class="text-xs text-slate-400 mt-0.5">Lofi Girl &amp; Synth Records</p>
+              </div>
+
+              <!-- Thumbs up/down -->
+              <div class="flex items-center justify-center gap-6 my-2 text-slate-400">
+                <button class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-xs hover:text-white">
+                  👎
+                </button>
+                <button class="w-8 h-8 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-xs text-aura-red">
+                  👍
+                </button>
+              </div>
+
+              <!-- Seekbar -->
+              <div class="space-y-1 my-1">
+                <div class="w-full h-1 bg-slate-800 rounded-full relative overflow-hidden">
+                  <div id="phoneSeekbarProgress" class="h-full bg-aura-red w-1/4 rounded-full"></div>
+                </div>
+                <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                  <span id="phoneCurrentTime">0:05</span>
+                  <span>3:20</span>
+                </div>
+              </div>
+
+              <!-- Playback controls -->
+              <div class="flex items-center justify-around mt-2">
+                <button class="text-slate-500 text-xs">🔀</button>
+                <button class="text-slate-200 text-sm">⏮</button>
+                <button onclick="toggleAudio()" class="w-12 h-12 rounded-full bg-gradient-to-r from-aura-redDark to-aura-red text-white flex items-center justify-center shadow-glow-red">
+                  ▶
+                </button>
+                <button class="text-slate-200 text-sm">⏭</button>
+                <button class="text-slate-500 text-xs">🔁</button>
+              </div>
+            </div>
+
+            <!-- ================= SCREEN 3: EXPLORE / LIVE RADIO ================= -->
+            <div id="screen-explore" class="screen-content hidden flex-1 flex flex-col overflow-y-auto px-4 pt-2 pb-16 bg-[#08080c]">
+              <!-- App Bar -->
+              <div class="flex items-center justify-between py-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-aura-red flex items-center justify-center shadow-glow-red">
+                    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span class="font-extrabold text-sm tracking-tight text-white">AURASOUND APK</span>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-aura-red/20 text-aura-red font-bold">MUSIC</span>
+                </div>
+              </div>
+
+              <!-- Radio Featured Card -->
+              <div class="p-4 rounded-3xl bg-slate-900/90 border border-aura-border shadow-2xl relative overflow-hidden my-3">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-2xl bg-aura-red/20 border border-aura-red/40 flex items-center justify-center text-aura-red">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  </div>
+                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-aura-red/20 text-aura-red border border-aura-red/30 font-mono font-bold animate-pulse">
+                    LIVE STATION
+                  </span>
+                </div>
+
+                <div class="mt-3">
+                  <h4 class="text-base font-bold text-white">YouTube Music Radio &amp; Explore</h4>
+                  <p class="text-[11px] text-slate-400 mt-1 leading-snug">
+                    Endless radio tuned to <strong class="text-slate-200">Midnight City Chill (Synthwave Odyssey)</strong> by Lofi Girl &amp; Synth Records.
+                  </p>
+                </div>
+
+                <div class="flex items-center gap-2 mt-4">
+                  <button class="px-3 py-1.5 rounded-xl bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700 flex items-center gap-1 hover:border-slate-500">
+                    🔄 Refresh
+                  </button>
+                  <button onclick="toggleAudio()" class="flex-1 py-1.5 rounded-xl bg-gradient-to-r from-aura-redDark to-aura-red text-white text-[11px] font-bold shadow-glow-red flex items-center justify-center gap-1 hover:brightness-110">
+                    ▶ Play Radio Mix
+                  </button>
+                </div>
+              </div>
+
+              <!-- Station categories -->
+              <div class="flex items-center gap-2 overflow-x-auto py-1 text-xs">
+                <button class="px-3 py-1 rounded-full bg-white text-black font-semibold text-[11px] whitespace-nowrap">
+                  ✨ All Stations
+                </button>
+                <button class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-[11px] whitespace-nowrap">
+                  ☕ Chill &amp; Relax
+                </button>
+                <button class="px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-[11px] whitespace-nowrap">
+                  ⚡ Workout &amp; ...
+                </button>
+              </div>
+
+              <div class="text-[10px] font-mono text-slate-500 mt-4 uppercase">Recommended Radio Queue (6)</div>
+            </div>
+
+            <!-- ================= SCREEN 4: LOCAL LIBRARY SCANNER ================= -->
+            <div id="screen-library" class="screen-content hidden flex-1 flex flex-col overflow-y-auto px-4 pt-2 pb-16 bg-[#08080c]">
+              <!-- App Bar -->
+              <div class="flex items-center justify-between py-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-aura-red flex items-center justify-center shadow-glow-red">
+                    <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span class="font-extrabold text-sm tracking-tight text-white">AURASOUND APK</span>
+                  <span class="text-[9px] px-1.5 py-0.2 rounded bg-aura-red/20 text-aura-red font-bold">MUSIC</span>
+                </div>
+              </div>
+
+              <!-- Scanner Hero Card -->
+              <div class="p-4 rounded-3xl bg-slate-900/90 border border-aura-border shadow-2xl relative overflow-hidden my-3">
+                <div class="flex items-start justify-between">
+                  <div class="w-10 h-10 rounded-2xl bg-aura-red/20 border border-aura-red/40 flex items-center justify-center text-aura-red">
+                    📁
+                  </div>
+                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-aura-red/20 text-aura-red border border-aura-red/30 font-mono font-bold">
+                    OFFLINE LIBRARY
+                  </span>
+                </div>
+
+                <div class="mt-3">
+                  <h4 class="text-base font-bold text-white">Device Files &amp; Local Storage Scanner</h4>
+                  <p class="text-[11px] text-slate-400 mt-1 leading-snug">
+                    Scan your Android internal storage, SD cards, and downloads into your YouTube Music library.
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 mt-4">
+                  <button onclick="simulateScan()" class="py-2 rounded-xl bg-gradient-to-r from-aura-redDark to-aura-red text-white text-[11px] font-bold shadow-glow-red flex items-center justify-center gap-1">
+                    💾 Scan Directory
+                  </button>
+                  <button class="py-2 rounded-xl bg-slate-800 text-[11px] font-mono text-slate-300 border border-slate-700 flex items-center justify-center gap-1">
+                    📤 Pick Files
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-slate-800 text-left">
+                  <div>
+                    <div class="text-[9px] font-mono text-slate-400 uppercase">Indexed</div>
+                    <div id="indexedCount" class="text-sm font-extrabold text-white font-mono">3 Songs</div>
+                  </div>
+                  <div>
+                    <div class="text-[9px] font-mono text-slate-400 uppercase">Audio Formats</div>
+                    <div class="text-[10px] font-bold text-emerald-400 font-mono">FLAC / MP3 / WAV / AAC</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= SCREEN 5: SETTINGS & SYNC ================= -->
+            <div id="screen-settings" class="screen-content hidden flex-1 flex flex-col overflow-y-auto px-4 pt-2 pb-16 bg-[#08080c]">
+              <div class="flex items-center justify-between py-2">
+                <div>
+                  <h4 class="text-base font-extrabold text-white">Application Settings</h4>
+                  <p class="text-[10px] text-slate-400">Manage YouTube Sync, Crossfade playback, and APK customization</p>
+                </div>
+                <button onclick="switchPhoneScreen('home')" class="w-6 h-6 rounded-full bg-slate-800 text-slate-400 text-xs flex items-center justify-center">✕</button>
+              </div>
+
+              <!-- Setting Tabs -->
+              <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-900 border border-slate-800 my-2 text-[10px] font-mono">
+                <button class="flex-1 py-1 rounded-lg bg-white text-black font-bold text-center">📺 YouTube Sync</button>
+                <button class="flex-1 py-1 text-slate-400 text-center">🎛 Crossfade &amp; Sound</button>
+              </div>
+
+              <!-- Sync Box -->
+              <div class="p-3.5 rounded-2xl bg-slate-900/90 border border-aura-border my-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-xl bg-aura-red/20 text-aura-red flex items-center justify-center text-sm">📺</div>
+                    <div>
+                      <div class="text-xs font-bold text-white">YouTube Music Live</div>
+                      <div class="text-[9px] font-mono text-slate-400">Channel ID: UC_AuraMusic</div>
+                    </div>
+                  </div>
+                  <span class="text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-mono font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Connected
+                  </span>
+                </div>
+
+                <button onclick="simulateSync()" id="syncBtn" class="w-full mt-3 py-2 rounded-xl bg-gradient-to-r from-aura-redDark to-aura-red text-white text-xs font-bold shadow-glow-red flex items-center justify-center gap-1.5">
+                  <span id="syncIcon">🔄</span>
+                  <span id="syncText">Sync YouTube Music</span>
+                </button>
+
+                <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-800 text-center font-mono">
+                  <div class="p-2 rounded-xl bg-black/40 border border-slate-800">
+                    <div class="text-[9px] text-slate-400">Synced Tracks</div>
+                    <div class="text-sm font-bold text-white mt-0.5">5</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-black/40 border border-slate-800">
+                    <div class="text-[9px] text-slate-400">Playlists</div>
+                    <div class="text-sm font-bold text-aura-red mt-0.5">4</div>
+                  </div>
+                  <div class="p-2 rounded-xl bg-black/40 border border-slate-800">
+                    <div class="text-[9px] text-slate-400">Audio Bitrate</div>
+                    <div class="text-xs font-bold text-white mt-0.5">320 kbps</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-2 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Settings synced in real-time</span>
+                <button onclick="switchPhoneScreen('home')" class="px-3 py-1 rounded-lg bg-slate-800 text-white font-bold">Done</button>
+              </div>
+            </div>
+
+            <!-- ================= BOTTOM MINI PLAYER (PERSISTENT) ================= -->
+            <div onclick="switchPhoneScreen('nowplaying')" class="absolute bottom-12 left-2 right-2 p-2 rounded-2xl bg-[#11131c]/95 border border-aura-border backdrop-blur-md flex items-center justify-between shadow-lg cursor-pointer z-30 transition hover:border-aura-red/50">
+              <div class="flex items-center gap-2 truncate">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-xs flex-shrink-0">
+                  ▶
+                </div>
+                <div class="truncate">
+                  <div class="text-[11px] font-bold text-white truncate">Midnight City Chill (...</div>
+                  <div class="text-[9px] text-slate-400 font-mono truncate">Lofi... • <span class="text-aura-red">YouTube Music</span></div>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5 text-xs text-slate-300">
+                <span class="text-slate-400">🌙</span>
+                <button onclick="event.stopPropagation(); toggleAudio();" class="w-7 h-7 rounded-full bg-aura-red text-white flex items-center justify-center shadow-glow-red">
+                  ▶
+                </button>
+                <span class="text-slate-500 text-[10px]">⤢</span>
+              </div>
+            </div>
+
+            <!-- ================= BOTTOM ANDROID NAVIGATION BAR ================= -->
+            <div class="absolute bottom-0 left-0 right-0 h-12 bg-[#0a0a10] border-t border-slate-900 grid grid-cols-5 items-center text-center z-40">
+              <button onclick="switchPhoneScreen('home')" id="navHome" class="flex flex-col items-center justify-center text-aura-red">
+                <span class="text-sm">🏠</span>
+                <span class="text-[9px] font-semibold">Home</span>
+              </button>
+              <button onclick="switchPhoneScreen('explore')" id="navExplore" class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-200">
+                <span class="text-sm">🧭</span>
+                <span class="text-[9px] font-semibold">Explore</span>
+              </button>
+              <button onclick="switchPhoneScreen('library')" id="navLibrary" class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-200">
+                <span class="text-sm">📁</span>
+                <span class="text-[9px] font-semibold">Library</span>
+              </button>
+              <button onclick="switchPhoneScreen('nowplaying')" id="navIcons" class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-200">
+                <span class="text-sm">✨</span>
+                <span class="text-[9px] font-semibold">Studio</span>
+              </button>
+              <button onclick="switchPhoneScreen('settings')" id="navSettings" class="flex flex-col items-center justify-center text-slate-500 hover:text-slate-200">
+                <span class="text-sm">⚙</span>
+                <span class="text-[9px] font-semibold">Settings</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Screen Breakdown & Architectural Analysis -->
+        <div class="lg:col-span-4 space-y-4 order-3">
+          <div class="p-6 rounded-3xl bg-aura-card border border-aura-border shadow-xl">
+            <div class="flex items-center gap-2 text-xs font-mono text-aura-red mb-2">
+              <span class="w-2 h-2 rounded-full bg-aura-red"></span>
+              <span id="analysisBadge">ANALYSIS: HOME &amp; QUICK PICKS</span>
+            </div>
+            
+            <h3 id="analysisTitle" class="text-xl font-bold text-white">
+              Dynamic Recommendation &amp; Mood Engine
+            </h3>
+
+            <p id="analysisDesc" class="text-sm text-slate-400 mt-2 leading-relaxed">
+              Analyzed from screenshot 1: Features instant mood clustering (Energize, Relax, Workout) and dynamic algorithmic seeds. The track queue combines YouTube Music streaming manifests with local device storage tracks seamlessly.
+            </p>
+
+            <div class="mt-4 pt-4 border-t border-slate-800 space-y-2">
+              <div class="text-xs font-mono text-slate-300 font-semibold">Technical Highlights:</div>
+              <ul id="analysisPoints" class="space-y-1.5 text-xs text-slate-400">
+                <li class="flex items-center gap-2">
+                  <span class="text-aura-red">✔</span> ExoPlayer Media3 foreground audio session
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-aura-red">✔</span> Non-blocking Room SQLite playlist cache
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-aura-red">✔</span> Sub-50ms song preload &amp; audio buffer warmup
+                </li>
+              </ul>
+            </div>
+
+            <!-- Quick Action -->
+            <div class="mt-5">
+              <button onclick="toggleAudio()" class="w-full py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-aura-red text-white text-xs font-mono font-semibold transition flex items-center justify-center gap-2">
+                <span>🔊</span> Listen to Synthesis Demo
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= TECHNICAL DEEP DIVE & ARCHITECTURE ================= -->
+  <section id="architecture" class="no-print py-20 border-b border-aura-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono mb-3">
+          <span>ANDROID SYSTEM ARCHITECTURE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          How Aditya Engineered <span class="text-aura-red">AuraSound APK</span>
+        </h2>
+        <p class="text-slate-400 text-sm mt-2">
+          Deconstructing the technical subsystems behind the screenshots: YouTube sync protocols, local storage crawlers, and high-bitrate DSP pipelines.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Architecture Card 1 -->
+        <div class="p-6 rounded-3xl bg-aura-card border border-aura-border hover:border-aura-red/40 transition group">
+          <div class="w-12 h-12 rounded-2xl bg-aura-red/10 border border-aura-red/30 flex items-center justify-center text-aura-red text-xl mb-4 group-hover:scale-110 transition">
+            📻
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-aura-red transition">
+            ExoPlayer &amp; Media3 Session Pipeline
+          </h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Implements <code class="text-purple-300 font-mono">MediaSessionService</code> with persistent notification controls, headphone unplug event listeners (<code class="text-purple-300 font-mono">AudioManager.ACTION_AUDIO_BECOMING_NOISY</code>), and zero audio-tearing during Android memory eviction cycles.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-[11px] font-mono">
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">Android Media3</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">Crossfade DSP</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">WakeLocks</span>
+          </div>
+        </div>
+
+        <!-- Architecture Card 2 -->
+        <div class="p-6 rounded-3xl bg-aura-card border border-aura-border hover:border-aura-red/40 transition group">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl mb-4 group-hover:scale-110 transition">
+            📺
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-400 transition">
+            YouTube InnerTube API Sync
+          </h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Direct authenticated synchronization with YouTube Music channels (e.g. <code class="text-cyan-300 font-mono">UC_AuraMusic</code>), retrieving adaptive streaming audio streams (Opus 160kbps / AAC 256kbps) and upscaling with 320kbps target headroom.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-[11px] font-mono">
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">Reverse API</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">Adaptive DASH</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">Channel ID Link</span>
+          </div>
+        </div>
+
+        <!-- Architecture Card 3 -->
+        <div class="p-6 rounded-3xl bg-aura-card border border-aura-border hover:border-aura-red/40 transition group">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl mb-4 group-hover:scale-110 transition">
+            📁
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition">
+            Scoped Storage &amp; SAF Indexer
+          </h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Compliant with Android 13/14 Granular Media Permissions. Utilizes the <code class="text-emerald-300 font-mono">Storage Access Framework</code> to recursively index micro-SD and internal folders without permission revocation issues.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5 text-[11px] font-mono">
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">FLAC / WAV / MP3</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">ID3 Tag Extractor</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300">SAF DocumentFile</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= LIVE WEB AUDIO PLAYER & CANVAS VISUALIZER ================= -->
+  <section class="no-print py-16 bg-[#0a0c10] border-b border-aura-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="p-8 rounded-3xl bg-aura-card border border-aura-border relative overflow-hidden shadow-2xl">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          
+          <!-- Player Metadata -->
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-aura-redDark via-purple-600 to-indigo-600 flex items-center justify-center shadow-glow-red flex-shrink-0">
+              <span class="text-2xl">🎶</span>
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-aura-red/20 text-aura-red text-[10px] font-mono font-bold mb-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-aura-red animate-ping"></span> WEB AUDIO DSP ACTIVE
+              </div>
+              <h4 id="livePlayerTrackName" class="text-lg font-bold text-white">Midnight City Chill (Synthwave Odyssey)</h4>
+              <p class="text-xs text-slate-400 font-mono">Lofi Girl &amp; Synth Records • 320 kbps High Fidelity</p>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center gap-4">
+            <button onclick="toggleAudio()" id="mainPlayBtn" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-aura-redDark to-aura-red text-white font-bold text-sm shadow-glow-red hover:scale-105 active:scale-95 transition flex items-center gap-2">
+              <span id="mainPlayBtnIcon">▶</span>
+              <span id="mainPlayBtnText">Play Audio Stream</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Real-Time Frequency Waveform Canvas -->
+        <div class="mt-6 pt-6 border-t border-slate-800">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+            <span>REAL-TIME 32-BAND FFT FREQUENCY VISUALIZER</span>
+            <span id="audioStatusText" class="text-aura-red">AUDIO ENGINE READY</span>
+          </div>
+          <div class="h-20 w-full bg-black/50 rounded-2xl p-2 border border-slate-800 overflow-hidden">
+            <canvas id="visualizerCanvas" class="w-full h-full block"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= COMPREHENSIVE TECHNICAL RESUME ================= -->
+  <section id="resume" class="py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Resume Top Bar -->
+      <div class="no-print flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-mono text-aura-red uppercase tracking-wider font-semibold">CURRICULUM VITAE &amp; PORTFOLIO</span>
+          <h2 class="text-3xl font-black text-white">Aditya Demon | Official Resume</h2>
+          <p class="text-xs text-slate-400 font-mono mt-0.5">Optimized for ATS Parsing &amp; Lead Android / Mobile Audio Engineering Roles</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-aura-card hover:bg-aura-cardHover border border-aura-border text-white text-xs font-bold font-mono transition flex items-center gap-2">
+            <svg class="w-4 h-4 text-aura-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Print / Save as PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- ================= THE ACTUAL ATS RESUME DOCUMENT ================= -->
+      <div class="resume-container rounded-3xl bg-[#0e121a] border border-aura-border p-8 sm:p-12 shadow-2xl text-slate-200">
+        
+        <!-- Header -->
+        <div class="border-b border-slate-700/80 pb-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+          <div>
+            <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight resume-text-contrast">
+              ADITYA <span class="text-aura-red font-signature text-4xl sm:text-5xl ml-1 font-normal">(demon)</span>
+            </h1>
+            <p class="text-base font-semibold text-aura-red mt-1">
+              Android Application Architect &amp; Audio Systems Developer
+            </p>
+            <p class="text-xs font-mono text-slate-400 mt-1">
+              Bengaluru / Remote • Open to Global Relocation &amp; High-Impact Opportunities
+            </p>
+          </div>
+
+          <div class="text-xs font-mono text-slate-300 space-y-1.5 text-left sm:text-right">
+            <div><strong class="text-slate-200">Email:</strong> <a href="mailto:ethanwhite271119@gmail.com" class="text-aura-red hover:underline">ethanwhite271119@gmail.com</a></div>
+            <div><strong class="text-slate-200">Instagram:</strong> <a href="https://www.instagram.com/aditya_demon_3410?mdxt=MTdvbGFpOHdxcWJ6aw==" target="_blank" class="text-pink-400 hover:underline">@aditya_demon_3410</a></div>
+            <div><strong class="text-slate-200">Flagship APK:</strong> AuraSound (320kbps Lossless &amp; YouTube Sync)</div>
+          </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="mb-8">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-aura-red font-mono mb-2">
+            ■ PROFESSIONAL SUMMARY
+          </h2>
+          <p class="text-sm text-slate-300 leading-relaxed resume-text-contrast">
+            Accomplished Android Systems and Mobile Audio Developer with deep domain expertise in Jetpack Media3, ExoPlayer architecture, low-latency DSP pipelines, and Scoped Storage file indexing. Creator of <strong>AuraSound APK</strong>, an advanced hybrid media platform uniting YouTube Music cloud streaming, YouTube InnerTube live synchronization, and local lossless high-resolution audio (FLAC, 320kbps MP3, WAV, AAC). Proven ability to deliver fluid 60fps Compose UI with sub-50ms buffer response times.
+          </p>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="mb-8">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-aura-red font-mono mb-3">
+            ■ CORE TECHNICAL COMPETENCIES
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 resume-badge">
+              <strong class="text-white block mb-1">Android &amp; Mobile Architecture</strong>
+              <p class="text-slate-400">Kotlin, Java, Jetpack Compose, Coroutines &amp; Flow, Android MediaSession, Foreground Services, MVVM / Clean Architecture, Room DB.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 resume-badge">
+              <strong class="text-white block mb-1">Audio Engineering &amp; DSP</strong>
+              <p class="text-slate-400">ExoPlayer 2.x / Media3, AudioTrack, Oboe / AAudio C++, Crossfade Algorithms (1-12s), ReplayGain loudness leveling, Equalizer 10-Band DSP.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 resume-badge">
+              <strong class="text-white block mb-1">Network &amp; Reverse Engineering</strong>
+              <p class="text-slate-400">YouTube InnerTube API integration, DASH/HLS audio manifests, OkHttp caching layer, WebSocket real-time channel sync.</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 resume-badge">
+              <strong class="text-white block mb-1">System &amp; Storage Management</strong>
+              <p class="text-slate-400">Android SAF (Storage Access Framework), DocumentFile indexing, Scoped Storage permissions (API 34+), ID3/FLAC metadata parsing.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flagship Project Deep-Dive -->
+        <div class="mb-8">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-aura-red font-mono mb-4">
+            ■ FLAGSHIP ARCHITECTURAL PROJECT: AURASOUND APK
+          </h2>
+
+          <div class="space-y-4">
+            <div class="p-4 rounded-2xl bg-slate-900/40 border border-slate-800/80">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <h3 class="text-base font-bold text-white resume-text-contrast">
+                  AuraSound APK — Next-Gen Android Hybrid Music Engine
+                </h3>
+                <span class="text-xs font-mono text-aura-red">Lead Architect &amp; Core Engineer • 2024 - Present</span>
+              </div>
+              
+              <ul class="mt-3 space-y-2 text-xs text-slate-300 leading-relaxed list-disc list-inside">
+                <li>
+                  <strong>Hybrid Stream &amp; Local Playback:</strong> Engineered an ExoPlayer Media3 audio pipeline capable of seamless switching between YouTube Music live audio streams and local storage lossy/lossless audio formats without UI stutter.
+                </li>
+                <li>
+                  <strong>Device Files &amp; Storage Scanner:</strong> Built a multithreaded directory scanner leveraging Android Storage Access Framework (SAF) capable of cataloging 10,000+ audio tracks in &lt; 1.8 seconds across internal and micro-SD directories.
+                </li>
+                <li>
+                  <strong>YouTube Music Live Synchronization:</strong> Established bidirectional channel syncing (e.g. Channel ID: <code class="text-aura-cyan">UC_AuraMusic</code>), allowing automatic radio generation based on seed tracks, playlist caching, and 320 kbps bitrate preservation.
+                </li>
+                <li>
+                  <strong>Real-Time Crossfade &amp; DSP:</strong> Implemented customizable crossfade playback (0-12 seconds) that interpolates dual-player gain curves to provide seamless transition between tracks with zero audible clipping.
+                </li>
+                <li>
+                  <strong>Memory Footprint Optimization:</strong> Reduced background runtime RAM consumption to &lt; 62MB during 1080p video audio stream demuxing by offloading parsing to native Kotlin coroutines.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="mb-8">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-aura-red font-mono mb-4">
+            ■ PROFESSIONAL EXPERIENCE
+          </h2>
+
+          <div class="space-y-6">
+            
+            <div>
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <h3 class="text-sm font-bold text-white resume-text-contrast">Senior Mobile Audio Engineer</h3>
+                <span class="text-xs font-mono text-slate-400">Independent Android Engineering • 2023 - Present</span>
+              </div>
+              <p class="text-xs text-aura-red font-mono mt-0.5">High-Performance Media Applications &amp; Streaming Architectures</p>
+              <ul class="mt-2 space-y-1.5 text-xs text-slate-300 leading-relaxed list-disc list-inside">
+                <li>Designed custom MediaNotificationManager with lockscreen media session actions, volume boost, and sleep timer scheduling.</li>
+                <li>Conducted performance profiling using Android Studio CPU profiler and Perfetto to eliminate GC pause jank during high-frequency audio visualizer redraws.</li>
+                <li>Collaborated with community audio enthusiasts to test lossless FLAC 24-bit/96kHz output on DAC-enabled Android handsets.</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <h3 class="text-sm font-bold text-white resume-text-contrast">Android Developer &amp; Systems Specialist</h3>
+                <span class="text-xs font-mono text-slate-400">Mobile Systems Group • 2022 - 2023</span>
+              </div>
+              <p class="text-xs text-slate-400 font-mono mt-0.5">Android Jetpack, Room Database &amp; Cloud API Integrations</p>
+              <ul class="mt-2 space-y-1.5 text-xs text-slate-300 leading-relaxed list-disc list-inside">
+                <li>Maintained Room DB schema migrations with encrypted SQLCipher backing for user credential and offline song indexes.</li>
+                <li>Architected offline-first synchronizer managing intermittent network drops without pausing ongoing audio playback.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Education & Credentials -->
+        <div>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-aura-red font-mono mb-3">
+            ■ EDUCATION &amp; CREDENTIALS
+          </h2>
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-slate-300">
+            <div>
+              <strong class="text-white">Bachelor of Science in Computer Science &amp; Engineering</strong>
+              <div class="text-slate-400">Focus on Mobile Systems, Digital Signal Processing &amp; Operating Systems</div>
+            </div>
+            <span class="font-mono text-slate-400 mt-1 sm:mt-0">First Class Honors</span>
+          </div>
+
+          <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-mono">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">Associate Android Developer (Kotlin)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">Modern Android Architecture (Jetpack)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">Audio DSP Fundamentals</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT & HIRE ADITYA ================= -->
+  <section id="contact" class="no-print py-20 border-t border-aura-border bg-[#0a0c10]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-aura-redDark to-aura-red flex items-center justify-center mx-auto shadow-glow-red mb-6">
+        <svg class="w-8 h-8 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+        Connect with <span class="text-aura-red">Aditya Demon</span>
+      </h2>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto mt-3">
+        Whether you are building next-generation streaming clients, custom Android OS audio pipelines, or high-performance media applications — reach out directly:
+      </p>
+
+      <!-- Quick Action Buttons with verified details -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+        <a href="mailto:ethanwhite271119@gmail.com" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-aura-redDark to-aura-red text-white text-xs font-bold shadow-glow-red hover:brightness-110 transition flex items-center gap-2">
+          <span>✉</span> Email Me: ethanwhite271119@gmail.com
+        </a>
+
+        <a href="https://www.instagram.com/aditya_demon_3410?mdxt=MTdvbGFpOHdxcWJ6aw==" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-2xl bg-slate-900 border border-pink-500/40 hover:border-pink-500 text-pink-300 text-xs font-mono font-semibold transition flex items-center gap-2">
+          <span>📸</span> Instagram: @aditya_demon_3410
+        </a>
+
+        <button onclick="copyEmail()" class="px-5 py-3 rounded-2xl bg-aura-card border border-aura-border hover:border-aura-red text-slate-300 text-xs font-mono transition flex items-center gap-2">
+          <span>📋</span> Copy Email
+        </button>
+      </div>
+
+      <!-- Toast Alert Box -->
+      <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="px-5 py-3 rounded-2xl bg-slate-900 border border-aura-red text-white text-xs font-mono shadow-2xl flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-aura-red animate-ping"></span>
+          <span id="toastMsg">Email copied to clipboard!</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    /* =========================================================
+       1. SCREENSHOT SIMULATOR & TAB LOGIC
+       ========================================================= */
+    const screenData = {
+      home: {
+        badge: "ANALYSIS: SCREEN 1 - HOME & QUICK PICKS",
+        title: "Dynamic Recommendation & Mood Cluster Engine",
+        desc: "Direct analysis from screenshot 1: Features the custom AURASOUND APK header with YouTube Music badge, real-time mood category filters (All, Energize, Relax, Workout), and instant seed playlist generation ('Start radio from a song'). Tracks like 'Midnight City Chill (Synthwave Odyssey)' are cached for zero-delay startup.",
+        points: [
+          "Foreground MediaSession with notification controls",
+          "One-tap radio generation matching YouTube algorithmic queue",
+          "Sub-50ms song preload & audio buffer warmup"
+        ]
+      },
+      nowplaying: {
+        badge: "ANALYSIS: SCREEN 2 - NOW PLAYING AUDIO STUDIO",
+        title: "Hardware Accelerated Canvas & Video/Audio Switcher",
+        desc: "Direct analysis from screenshot 2: Features a high-contrast dark aesthetic with glowing purple-blue album artwork, dual toggle between Song (audio-only DASH) and Video (MP4 stream), like/dislike feedback, precise 0:05 / 3:20 seekbar, and tactile crimson playback controls.",
+        points: [
+          "Dual ExoPlayer video/audio track renderer selection",
+          "Seekbar scrub buffer listener with frame-accurate sync",
+          "Persistent mini-player synchronized across the entire app hierarchy"
+        ]
+      },
+      explore: {
+        badge: "ANALYSIS: SCREEN 3 - YOUTUBE LIVE RADIO STATION",
+        title: "Algorithmic Seed Radio & Explore Feed",
+        desc: "Direct analysis from screenshot 3: Displays 'YouTube Music Radio & Explore [LIVE STATION]' tuned directly to 'Midnight City Chill' by Lofi Girl & Synth Records. Users can refresh algorithmic queues or launch continuous endless radio mixes.",
+        points: [
+          "InnerTube Radio endpoint crawler generating dynamic track queues",
+          "Smart fallback to related artist stations if stream token expires",
+          "Genre station taxonomy (Chill & Relax, Workout, Focus)"
+        ]
+      },
+      library: {
+        badge: "ANALYSIS: SCREEN 4 - LOCAL STORAGE SCANNER",
+        title: "SAF Storage Scanner & Multi-Codec Indexer",
+        desc: "Direct analysis from screenshot 4: Shows the 'Device Files & Local Storage Scanner [OFFLINE LIBRARY]' interface. Built to crawl internal memory, downloads, and SD cards with native support for FLAC, MP3, WAV, and AAC formats.",
+        points: [
+          "Scoped Storage compliance (Android 11, 12, 13, 14, 15)",
+          "Lossless FLAC 24-bit decoding and ID3 tag album art extraction",
+          "Offline song indexing directly linked into the user's YouTube library"
+        ]
+      },
+      settings: {
+        badge: "ANALYSIS: SCREEN 5 - SETTINGS & YOUTUBE SYNC",
+        title: "Bidirectional YouTube Channel Sync & 320kbps Bitrate Engine",
+        desc: "Direct analysis from screenshot 5: Shows the application configuration modal featuring real-time connection to YouTube Music Live (Channel ID: UC_AuraMusic), 'Sync YouTube Music' action, crossfade playback timing, and 320 kbps audio quality presets.",
+        points: [
+          "OAuth & Channel ID linking (UC_AuraMusic sync pipeline)",
+          "Crossfade sound overlap parameterization (1s to 12s curves)",
+          "Bitrate optimization ensuring 320 kbps audio pipeline headroom"
+        ]
+      }
+    };
+
+    function switchPhoneScreen(screenKey) {
+      // 1. Hide all screen contents inside phone
+      const screens = document.querySelectorAll('.screen-content');
+      screens.forEach(s => s.classList.add('hidden'));
+
+      // 2. Show target screen
+      const target = document.getElementById('screen-' + screenKey);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // 3. Update tab styling
+      const tabBtns = document.querySelectorAll('.screen-tab-btn');
+      tabBtns.forEach(btn => {
+        btn.classList.remove('border-aura-red', 'shadow-glow-red');
+        btn.classList.add('border-aura-border');
+      });
+
+      const currentTab = document.getElementById('tabBtn-' + screenKey);
+      if (currentTab) {
+        currentTab.classList.remove('border-aura-border');
+        currentTab.classList.add('border-aura-red', 'shadow-glow-red');
+      }
+
+      // 4. Update bottom nav highlight
+      const navIds = ['navHome', 'navExplore', 'navLibrary', 'navIcons', 'navSettings'];
+      navIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.className = "flex flex-col items-center justify-center text-slate-500 hover:text-slate-200";
+      });
+
+      const navMap = {
+        home: 'navHome',
+        explore: 'navExplore',
+        library: 'navLibrary',
+        nowplaying: 'navIcons',
+        settings: 'navSettings'
+      };
+      const activeNav = document.getElementById(navMap[screenKey]);
+      if (activeNav) {
+        activeNav.className = "flex flex-col items-center justify-center text-aura-red";
+      }
+
+      // 5. Update Technical Breakdown description card
+      const data = screenData[screenKey];
+      if (data) {
+        document.getElementById('analysisBadge').innerText = data.badge;
+        document.getElementById('analysisTitle').innerText = data.title;
+        document.getElementById('analysisDesc').innerText = data.desc;
+        
+        const pointsList = document.getElementById('analysisPoints');
+        pointsList.innerHTML = '';
+        data.points.forEach(pt => {
+          const li = document.createElement('li');
+          li.className = "flex items-center gap-2";
+          li.innerHTML = `<span class="text-aura-red">✔</span> ${pt}`;
+          pointsList.appendChild(li);
+        });
+      }
+    }
+
+    // Phone Clock updater
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      let mins = now.getMinutes();
+      if (mins < 10) mins = '0' + mins;
+      if (hours < 10) hours = '0' + hours;
+      const clockEl = document.getElementById('phoneClock');
+      if (clockEl) clockEl.innerText = `${hours}:${mins}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Simulated actions inside phone
+    function simulateScan() {
+      const el = document.getElementById('indexedCount');
+      if (!el) return;
+      el.innerText = "Scanning...";
+      setTimeout(() => {
+        el.innerText = "142 Songs (FLAC/MP3)";
+        showToast("Storage scanner indexed 142 local tracks into AuraSound!");
+      }, 900);
+    }
+
+    function simulateSync() {
+      const icon = document.getElementById('syncIcon');
+      const text = document.getElementById('syncText');
+      if (icon) icon.className = "inline-block animate-spin";
+      if (text) text.innerText = "Syncing with Channel UC_AuraMusic...";
+      
+      setTimeout(() => {
+        if (icon) icon.className = "";
+        if (text) text.innerText = "Sync Complete (Synced)";
+        showToast("Synchronized with YouTube Music Channel UC_AuraMusic in real-time!");
+      }, 1200);
+    }
+
+    /* =========================================================
+       2. REAL WEB AUDIO SYNTHESIZER & FFT VISUALIZER
+       ========================================================= */
+    let audioCtx = null;
+    let isPlaying = false;
+    let synthTimer = null;
+    let analyser = null;
+    let visualizerAnimId = null;
+
+    // Pleasant Lofi / Synthwave Chords (Cmaj7 -> Am7 -> Fmaj7 -> G7)
+    const chords = [
+      [261.63, 329.63, 392.00, 493.88], // Cmaj7
+      [220.00, 261.63, 329.63, 392.00], // Am7
+      [174.61, 220.00, 261.63, 329.63], // Fmaj7
+      [196.00, 246.94, 293.66, 349.23]  // G7
+    ];
+    let chordIndex = 0;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 64;
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playChord() {
+      if (!isPlaying || !audioCtx) return;
+      const notes = chords[chordIndex];
+      chordIndex = (chordIndex + 1) % chords.length;
+
+      const now = audioCtx.currentTime;
+
+      const chordGain = audioCtx.createGain();
+      chordGain.gain.setValueAtTime(0.08, now);
+      chordGain.gain.exponentialRampToValueAtTime(0.001, now + 2.5);
+
+      notes.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(800 + idx * 200, now);
+
+        osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+        osc.frequency.setValueAtTime(freq, now);
+
+        osc.connect(filter);
+        filter.connect(chordGain);
+
+        osc.start(now);
+        osc.stop(now + 2.6);
+      });
+
+      chordGain.connect(analyser);
+      analyser.connect(audioCtx.destination);
+    }
+
+    function toggleAudio() {
+      initAudio();
+      isPlaying = !isPlaying;
+
+      const mainBtnText = document.getElementById('mainPlayBtnText');
+      const mainBtnIcon = document.getElementById('mainPlayBtnIcon');
+      const heroPlayText = document.getElementById('heroPlayText');
+      const audioPulseDot = document.getElementById('audioPulseDot');
+      const audioStatusText = document.getElementById('audioStatusText');
+
+      if (isPlaying) {
+        if (mainBtnText) mainBtnText.innerText = "Pause Live Stream";
+        if (mainBtnIcon) mainBtnIcon.innerText = "⏸";
+        if (heroPlayText) heroPlayText.innerText = "Pause Demo (Active)";
+        if (audioPulseDot) audioPulseDot.className = "w-2 h-2 rounded-full bg-emerald-400 animate-ping";
+        if (audioStatusText) {
+          audioStatusText.innerText = "STREAMING: 320 KBPS AUDIO ACTIVE";
+          audioStatusText.className = "text-emerald-400";
+        }
+
+        playChord();
+        synthTimer = setInterval(playChord, 2200);
+        startVisualizer();
+        showToast("AuraSound Web Audio Engine started: Midnight City Chill");
+      } else {
+        if (mainBtnText) mainBtnText.innerText = "Play Audio Stream";
+        if (mainBtnIcon) mainBtnIcon.innerText = "▶";
+        if (heroPlayText) heroPlayText.innerText = "Play Midnight City Demo (Web Audio)";
+        if (audioPulseDot) audioPulseDot.className = "w-2 h-2 rounded-full bg-aura-red";
+        if (audioStatusText) {
+          audioStatusText.innerText = "AUDIO ENGINE PAUSED";
+          audioStatusText.className = "text-aura-red";
+        }
+
+        clearInterval(synthTimer);
+        cancelAnimationFrame(visualizerAnimId);
+        clearVisualizer();
+      }
+    }
+
+    // HTML5 Canvas Frequency Bars Visualizer
+    function startVisualizer() {
+      const canvas = document.getElementById('visualizerCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+
+      function renderFrame() {
+        if (!isPlaying) return;
+        visualizerAnimId = requestAnimationFrame(renderFrame);
+
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+
+        analyser.getByteFrequencyData(dataArray);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const barWidth = (canvas.width / bufferLength) * 2;
+        let barHeight;
+        let x = 0;
+
+        for (let i = 0; i < bufferLength; i++) {
+          barHeight = (dataArray[i] / 255) * canvas.height * 0.9 + 2;
+
+          const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
+          gradient.addColorStop(0, '#ff2a55');
+          gradient.addColorStop(0.6, '#a855f7');
+          gradient.addColorStop(1, '#00f2fe');
+
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.roundRect(x, canvas.height - barHeight, barWidth - 2, barHeight, [4, 4, 0, 0]);
+          ctx.fill();
+
+          x += barWidth + 1;
+        }
+      }
+
+      renderFrame();
+    }
+
+    function clearVisualizer() {
+      const canvas = document.getElementById('visualizerCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#1e2436";
+      const bars = 24;
+      const barWidth = canvas.width / bars;
+      for (let i = 0; i < bars; i++) {
+        ctx.fillRect(i * barWidth + 2, canvas.height - 4, barWidth - 4, 4);
+      }
+    }
+    window.addEventListener('load', clearVisualizer);
+
+    /* =========================================================
+       3. TOAST NOTIFICATION HELPERS
+       ========================================================= */
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const msgEl = document.getElementById('toastMsg');
+      if (!toast || !msgEl) return;
+
+      msgEl.innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    function copyEmail() {
+      const email = "ethanwhite271119@gmail.com";
+      const tempInput = document.createElement("input");
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand("copy");
+        showToast("Copied: ethanwhite271119@gmail.com");
+      } catch (err) {
+        showToast("Email: ethanwhite271119@gmail.com");
+      }
+      document.body.removeChild(tempInput);
+    }
+  </script>
+</body>
+</html>
+```
